@@ -21,6 +21,6 @@ class TodoListTest extends TestCase
         $responseData = $response->json();
         // Assert that the JSON response contains 3 items
         $this->assertCount(3, $responseData['products']);
-        $this->assertCount(100, $responseData['total']);
+        $this->assertEquals(100, $responseData['total']);
     }
 }
