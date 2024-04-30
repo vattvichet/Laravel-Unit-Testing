@@ -54,8 +54,5 @@ class TodoListTest extends TestCase
         ];
         $response = $this->postJson('/api/todo-list', $incorrectData);
         $response->assertStatus(400);
-
-        // Test case 4: Test database state
-        // $this->assertDatabaseHas('todos', ['todo' => 'Go back home']);
     }
 }
