@@ -14,13 +14,19 @@ class TodoListTest extends TestCase
     public function test_getTodoList(): void
     {
         $response = $this->getJson('api/todo-list');
-
         $response->assertStatus(200);
-
+        // Make sure that the response match with mocked structure
+        $response->assertJsonStructure([
+            "todos" => [
+                '*' => [
+                    "id",
+                    "todo",
+                    "completed",
+                ]
+            ]
+        ]);
         // Decode the JSON response into an array
         $responseData = $response->json();
-        // Assert that the JSON response contains 3 items
-        $this->assertCount(3, $responseData['products']);
-        $this->assertEquals(100, $responseData['total']);
+        $this->assertEquals(150, $responseData['total']);
     }
 }

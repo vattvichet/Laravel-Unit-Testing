@@ -10,7 +10,7 @@ class TodoListController extends Controller
 {
     public function getTodoList()
     {
-        $response = Http::get('https://dummyjson.com/products?limit=3');
+        $response = Http::get('https://dummyjson.com/todos?limit=3');
         $data = $response->json();
         return response()->json($data, $response->status());
     }
